@@ -86,7 +86,7 @@ const navigate = useNavigate();
             </span> */}
             <span className="psw">
               <a href="#">
-                <Link to={"/signup"}> Didn't have account? </Link>
+                <Link to={"/"}> Didn't have account? </Link>
               </a>
             </span>
           </div>

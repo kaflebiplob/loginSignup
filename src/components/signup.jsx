@@ -21,7 +21,7 @@ function Signup() {
       .catch((err) => console.log(err));
 
     setError("");
-    if (!name || !password || !newpassword) {
+    if (!name || !password ) {
       setError("Please enter the username and password");
       return;
     }

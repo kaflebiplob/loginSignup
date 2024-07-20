@@ -9,6 +9,7 @@ app.use(cors());
 
 mongoose.connect("mongodb://localhost:27017/loginsignup");
 
+
 app.listen(3001, () => {
   console.log("server is running");
 });
@@ -17,7 +18,14 @@ app.post("/signup", (req, res) => {
   usermodel
     .create(req.body)
     .then((User) => res.json(User))
-    .catch((err) => res.json(err));
+    .catch((err) => {
+      if (err.code === 11000) {
+        res.status(400).json({ error: "Username already exists" });
+      } else {
+       
+        res.status(500).json(err);
+      }
+    });
 });
 app.post("/login", (req, res) => {
   const { name, password } = req.body;
